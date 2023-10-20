@@ -1,26 +1,34 @@
-const apiDataProjet = fetch("http://localhost:5678/api/works");
+async function workIndex(){
+  const apiDataProject = await fetch("http://localhost:5678/api/works",{
+    headers : {
+      "Accept" : "application/json",
+    }
+  })
+   if (apiDataProject.ok === true) {
+     return apiDataProject.json();
+   }
+   throw new Error('Impossible de contacter le serveur')
+}
 
-projetIndex = 0
-workIndex(projetIndex)
+workIndex().then(application => showImg(application))
 
-function workIndex (apiDataProjet){
-    const projets = document.createElement("figure")
+
+function showImg (apiDataProject) {
+  if (!Array.isArray(apiDataProject)) {
+    return;
+  }
+
+  for (let i = 0; i < apiDataProject.length; i++) {
+    const projetDiv = document.createElement("figure")
     const projetImg = document.createElement("img")
     const projetText = document.createElement("figcaption")
 
-    projets.appendChild(projetImg)
-    projets.appendChild(projetText)
+    projetImg.src = apiDataProject[i].imageUrl
+    projetText.innerText = apiDataProject[i].title
 
-    projetImg.src = apiDataProjet[projetIndex].imageUrl
-    projetText.innerText = apiDataProjet[projetIndex].title
-
-    let body = document.querySelector("body")
-    body.appendChild(projets)
-
-    if (index >= projets.length) {
-        projetIndex = 0;
-      }
-      if (index < 0) {
-        projetIndex = projets.length - 1;
-      }
+    projetDiv.appendChild(projetImg)
+    projetDiv.appendChild(projetText)
+  }
 }
+
+console.log(showImg)
