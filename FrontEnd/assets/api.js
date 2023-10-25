@@ -15,3 +15,5 @@ async function getCategories(){
    }
    throw new Error('Impossible de contacter le serveur')
 }
+
+
