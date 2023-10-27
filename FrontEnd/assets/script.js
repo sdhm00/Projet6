@@ -14,53 +14,50 @@ function showWorks (apiWorks) {
   }
 }
 
-function allCategory (apiWorks) {
-  for (let i = 0; i < apiWorks.length; i++){
-    if (apiWorks[i].categoryId !== 1) {
-      projetDiv.remove()
-    }
-  }
-}
-
-function objetsCategory (apiWorks) {
-  for (let i = 0; i < apiWorks.length; i++){
-    if (apiWorks[i].categoryId !== 1) {
-      projetDiv.remove()
-    }
-  }
-}
-
-function appartementsCategory (apiWorks) {
-  for (let i = 0; i < apiWorks.length; i++){
-    if (apiWorks[i].categoryId !== 2) {
-      projetDiv.remove()
-    }
-  }
-}
-
-function hotelsCategory (apiWorks) {
-  for (let i = 0; i < apiWorks.length; i++){
-    if (apiWorks[i].categoryId !== 3) {
-      projetDiv.remove()
-    }
-  }
-}
-
 function showCategories (apiCategories) {
-  const portfolio = document.querySelector(".portfolio")
-  for (let i = 0; i < apiCategories.length; i++) {
-    const boutonTous = document.getElementById("tous")
-    const boutonObjets = document.getElementById("objets")
-    const boutonAppartements = document.getElementById("appartements")
-    const boutonHotelEtResto = document.getElementById("hotels")
+  // const portfolio = document.querySelector("#portfolio")
+  const boutonTous = document.getElementById("tous")
+  const boutonObjets = document.getElementById("objets")
+  const boutonAppartements = document.getElementById("appartements")
+  const boutonHotelEtResto = document.getElementById("hotelsetresto")
 
-    boutonObjets.innerText = apiCategories[0].name
-    boutonAppartements.innerText = apiCategories[1].name
-    boutonHotelEtResto.innerText = apiCategories[2].name
+  boutonObjets.innerText = apiCategories[0].name
+  boutonAppartements.innerText = apiCategories[1].name
+  boutonHotelEtResto.innerText = apiCategories[2].name
 
-    console.log(boutonObjets)
-  }
+  // portfolio.appendChild(boutonObjets)
+  // portfolio.appendChild(boutonAppartements)
+  // portfolio.appendChild(boutonHotelEtResto)
+  // portfolio.appendChild(boutonTous)
+
+  console.log(boutonObjets)
 }
+
+
+// function filterButtons (apiWorks, apiCategories){
+//   boutonTous.addEventListener ("click", function(apiWorks){
+//     if (boutonObjets)
+//     console.log("Bouton Tous")
+//     allCategory(apiWorks)
+//   })
+  
+//   boutonObjets.addEventListener ("click", function(apiWorks){
+//     console.log("Bouton Objets")
+//     objetsCategory(apiWorks)
+//   })
+  
+//   boutonAppartements.addEventListener ("click", function(apiWorks){
+//     console.log("Bouton Appartements")
+//     appartementsCategory(apiWorks)
+//   })
+  
+//   boutonHotelEtResto.addEventListener ("click", function(apiWorks){
+//     console.log("Bouton Hôtels & restaurants")
+//     hotelsCategory(apiWorks)
+//   })
+
+//   console.log(filterButtons)
+// }
 
 const init = async()=>{
   const works = await getWorks()
