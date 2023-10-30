@@ -131,10 +131,28 @@ li:hover {
 	border: 1px;
 	display: flex;
 	justify-content: center;
+	gap: 10px;
+	margin: 50px;
 }
 
 .categories button {
-	border: 1px solid #1D6154
+	border: 1px solid #1D6154;
+	background-color: #FFFFFF;
+	color: #1D6154;
+	border-radius: 60px;
+	min-width: 100px;
+	font-family: Syne;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 19px;
+	letter-spacing: 0em;
+	text-align: center;
+	padding: 0 10px;
+}
+
+.categories button:focus {
+	background-color: #1D6154;
+	color: #FFFFFF;
 }
 
 .gallery {
