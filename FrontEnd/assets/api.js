@@ -16,4 +16,12 @@ async function getCategories(){
    throw new Error('Impossible de contacter le serveur')
 }
 
+async function getLogin(){
+  const apiLogin = await fetch(baseUrl + "/users/login")
+   if (apiLogin.ok === true) {
+     return apiLogin.json();
+   }
+   throw new Error('Impossible de contacter le serveur')
+}
+
 
