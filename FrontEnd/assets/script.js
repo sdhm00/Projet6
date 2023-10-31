@@ -55,7 +55,7 @@ function showCategories (apiCategories) {
     showWorks(filterWorksAppartement) 
     console.log("Bouton Appartements")
   })
-  
+
   boutonHotelEtResto.addEventListener ("click", async function(){
     const works = await getWorks()
     const filterWorksHotel = works.filter((work) => work.categoryId == 3)
@@ -72,7 +72,10 @@ const init = async()=>{
   const categories = await getCategories()
   showCategories(categories)
 
+  const login = await getLogin()
+
   console.log(works)
   console.log(categories)
+  console.log(login)
 }
 init();
