@@ -65,6 +65,33 @@ function showCategories (apiCategories) {
   })
 }
 
+document.addEventListener("DOMContentLoaded", function(apiLogin) {
+  const form = document.getElementById("form");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("mdp");
+  const message = document.getElementById("message");
+
+  form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+      const login = await getLogin()
+
+      // Hardcoded user credentials (in practice, use a server for authentication)
+      const validEmail = login.email;
+      const validPassword = login.password;
+
+      const enteredEmail = emailInput.value;
+      const enteredPassword = passwordInput.value;
+
+      if (enteredEmail === validEmail && enteredPassword === validPassword) {
+          message.textContent = "Login successful! Redirecting...";
+          // Here, you can redirect the user to a different page.
+          // For example: window.location.href = "dashboard.html";
+      } else {
+          message.textContent = "Erreur dans l’identifiant ou le mot de passe";
+      }
+  });
+});
+
 const init = async()=>{
   const works = await getWorks()
   showWorks(works)
@@ -73,6 +100,7 @@ const init = async()=>{
   showCategories(categories)
 
   const login = await getLogin()
+  showLogIn(login)
 
   console.log(works)
   console.log(categories)

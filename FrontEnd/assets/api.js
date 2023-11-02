@@ -23,5 +23,3 @@ async function getLogin(){
    }
    throw new Error('Impossible de contacter le serveur')
 }
-
-
