@@ -20,14 +20,17 @@ async function getLogin(){
   const apiLogin = await fetch(baseUrl + "/users/login", {
     method : "POST",
     headers : {"Content-type" : "application/json"},
-    body : chargeUtile
+    body: JSON.stringify({ email, password })
   })
-  .then(response => {
-    console.log(response.json())
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+        window.location.href = "./FrontEnd/index.html";
+    } else {
+        alert("Invalid email or password. Please try again.");
+    }
   })
-  
-   if (apiLogin.ok === true) {
-    return apiLogin.json();
-   }
-   throw new Error('Impossible de contacter le serveur')
-}
+  .catch(error => {
+    console.error("Error:", error);
+})}
+

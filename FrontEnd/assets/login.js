@@ -37,32 +37,49 @@
 
 // }
 
-const form = document.getElementById("form")
-const inputEmail = document.getElementById("email")
-const inputPassword = document.getElementById("mdp")
-const boutonConnexion = document.querySelector("submit")
+// const form = document.getElementById("form")
+// const inputEmail = document.getElementById("email")
+// const inputPassword = document.getElementById("mdp")
+// const boutonConnexion = document.querySelector("submit")
 
-form.addEventListener("submit", event => {
-  event.preventDefault()
-  connexion()
-})
+// form.addEventListener("submit", event => {
+//   event.preventDefault()
+//   connexion()
+// })
 
-function connexion () {
-  inputEmail.innerText = "sophie.bluel@test.tld"
-  inputPassword.innerText = "S0phie"
+// function connexion () {
+//   inputEmail.innerText = "sophie.bluel@test.tld"
+//   inputPassword.innerText = "S0phie"
 
-  const login = {
-    email : inputEmail.value,
-    password : inputPassword.value
-  }
+//   boutonConnexion.appendChild(inputEmail)
+//   boutonConnexion.appendChild(inputPassword)
 
-  const chargeUtile = JSON.stringify(login)
-  console.log(login)
-  console.log(chargeUtile)
+//   const chargeUtile = JSON.stringify(login)
+//   console.log(chargeUtile)
 
-  // boutonConnexion.addEventListener ("click", async function(){
-  //   const login = await getLogin()
-  //   // if (inputEmail ==)
-  // })
-}
+//   boutonConnexion.addEventListener ("click", async function(){
+//     const login = await getLogin()
+//     if (inputEmail == inputEmail.value && inputPassword == inputPassword.value) {
+
+//     }
+
+//   })
+// }
+
+document.addEventListener("DOMContentLoaded", function() {
+  const connexionButton = document.getElementById("connexion");
+
+  connexionButton.addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+      
+      emailInput.innerText = "sophie.bluel@test.tld"
+      passwordInput.innerText = "S0phie"
+
+      const email = emailInput.value;
+      const password = passwordInput.value;
+  });
+});
 
