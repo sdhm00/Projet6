@@ -65,31 +65,6 @@ function showCategories (apiCategories) {
   })
 }
 
-// document.addEventListener("DOMContentLoaded", function(apiLogin) {
-//   const form = document.getElementById("form");
-//   const emailInput = document.getElementById("email");
-//   const passwordInput = document.getElementById("mdp");
-//   const message = document.getElementById("message");
-
-//   form.addEventListener("submit", async function(event) {
-//       event.preventDefault();
-//       const login = await getLogin()
-
-//       const validEmail = login.email;
-//       const validPassword = login.password;
-
-//       const enteredEmail = emailInput.value;
-//       const enteredPassword = passwordInput.value;
-
-//       if (enteredEmail === validEmail && enteredPassword === validPassword) {
-//           message.textContent = "Login successful! Redirecting...";
-//       } else {
-//           message.textContent = "Erreur dans l’identifiant ou le mot de passe";
-//       }
-//   });
-// });
-
-
 
 const init = async()=>{
   const works = await getWorks()
