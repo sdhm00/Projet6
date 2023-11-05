@@ -1,6 +1,4 @@
-
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function(apiLogin) {
   const connexionButton = document.getElementById("connexion");
 
   connexionButton.addEventListener("submit", function(event) {
@@ -9,11 +7,15 @@ document.addEventListener("DOMContentLoaded", function() {
       const emailInput = document.getElementById("email");
       const passwordInput = document.getElementById("password");
       
-      emailInput.innerText = "sophie.bluel@test.tld"
-      passwordInput.innerText = "S0phie"
-
-      const email = emailInput.value;
-      const password = passwordInput.value;
+      emailInput.innerText = apiLogin.email
+      passwordInput.innerText = apiLogin.password
   });
 });
 
+const init = async()=>{
+  const login = await getLogin()
+  showLogIn(login)
+
+  console.log(login)
+}
+init();

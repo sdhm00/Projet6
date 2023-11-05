@@ -73,11 +73,7 @@ const init = async()=>{
   const categories = await getCategories()
   showCategories(categories)
 
-  const login = await getLogin()
-  showLogIn(login)
-
   console.log(works)
   console.log(categories)
-  console.log(login)
 }
 init();
