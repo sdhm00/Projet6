@@ -16,21 +16,15 @@ async function getCategories(){
    throw new Error('Impossible de contacter le serveur')
 }
 
-async function getLogin(){
+async function getLogin(email, password){
+  console.log(email, password)
   const apiLogin = await fetch(baseUrl + "/users/login", {
     method : "POST",
     headers : {"Content-type" : "application/json"},
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify({ "email" : email, "password" : password })
   })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-        window.location.href = "./FrontEnd/index.html";
-    } else {
-        alert("Invalid email or password. Please try again.");
-    }
-  })
-  .catch(error => {
-    console.error("Error:", error);
-})}
-
+  console.log(apiLogin)
+  if (apiLogin.ok === true) {
+    return apiLogin.json();
+  }
+}

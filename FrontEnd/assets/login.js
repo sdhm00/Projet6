@@ -1,21 +1,17 @@
-document.addEventListener("DOMContentLoaded", function(apiLogin) {
-  const connexionButton = document.getElementById("connexion");
+function installConnexion(){
+  const form = document.getElementById("form");
 
-  connexionButton.addEventListener("submit", function(event) {
-      event.preventDefault();
-      
-      const emailInput = document.getElementById("email");
-      const passwordInput = document.getElementById("password");
-      
-      emailInput.innerText = apiLogin.email
-      passwordInput.innerText = apiLogin.password
+  form.addEventListener("submit",async function(event) {
+      event.preventDefault()
+      const emailInput = document.getElementById("email").value;
+      const passwordInput = document.getElementById("password").value;
+
+      const login = await getLogin(emailInput, passwordInput)
+      console.log(login.token)
   });
-});
+};
 
-const init = async()=>{
-  const login = await getLogin()
-  showLogIn(login)
-
-  console.log(login)
+const init = ()=>{
+  installConnexion()
 }
 init();
