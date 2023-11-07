@@ -304,4 +304,20 @@ input[type="submit"]{
 	align-items: flex-end;
 }
 
+#errorBloc {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-wrap: nowrap;
+}
+
+#errorMessage {
+	padding: 20px;
+	font-family: 'Syne';
+	font-weight: 700;
+	background-color: #FFB0B0;
+	color: #F43B3B;
+	display: none;
+}
+
 /** Fin pages **/
