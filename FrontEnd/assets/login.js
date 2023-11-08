@@ -3,25 +3,21 @@ function installConnexion(){
   const errorMessage = document.getElementById("errorMessage");
 
   form.addEventListener("submit",async function(event) {
-      event.preventDefault();
-      const emailInput = document.getElementById("email").value;
-      const passwordInput = document.getElementById("password").value;
+    event.preventDefault();
+    const emailInput = document.getElementById("email").value;
+    const passwordInput = document.getElementById("password").value;
 
-      const login = await getLogin(emailInput, passwordInput);
+    const login = await getLogin(emailInput, passwordInput);
 
-      
-      const getToken = await JSON.stringify(login.token);
-      window.localStorage.setItem("token", getToken);
-      const token = localStorage.getItem("token")
-
-      if (getToken === null) {
-        errorMessage.style.display = flex;
-      }
-      else {
-        window.location.href = "./index.html";
-      }
+    try {
+      const token = login.token;
+      localStorage.setItem("token", token);
+      window.location.href = "./index.html";
+    }
+    catch (error) {
+      errorMessage.style.opacity = 1
+    }
   });
-
 };
 
 const init = ()=>{
