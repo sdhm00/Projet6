@@ -316,4 +316,6 @@ input[type="submit"]{
 
 /** Modal **/
 
-#modal {}
+#modal {
+	width: 100%;
+}
