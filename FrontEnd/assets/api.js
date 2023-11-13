@@ -28,3 +28,14 @@ async function getLogin(email, password){
     return apiLogin.json();
   }
 }
+
+async function postWorks(){
+  const apiPost = await fetch(baseUrl + "/works", {
+    method : "POST",
+    headers : {"Content-type" : "application/json"},
+  })
+  console.log(apiPost)
+  if (apiPost.ok === true) {
+    return apiPost.json();
+  }
+}

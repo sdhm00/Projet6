@@ -317,5 +317,23 @@ input[type="submit"]{
 /** Modal **/
 
 #modal {
-	width: 100%;
+	background-color: #000000;
+	height: 59px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	margin-left : calc(-1 * ((100vw - 100%) / 2));
+}
+
+.buttonmodal {
+	background-color: unset;
+	border: none;
+	color: #FFFFFF;
+	width: 129px;
+	height: 19px;
+}
+
+.editionicon {
+	padding: 0 10px 0 0;
 }
