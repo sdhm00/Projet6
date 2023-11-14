@@ -39,3 +39,14 @@ async function postWorks(){
     return apiPost.json();
   }
 }
+
+async function deleteWorks(){
+  const apiDelete = await fetch(baseUrl + "/works", {
+    method : "DELETE",
+    headers : {"Content-type" : "application/json"},
+  })
+  console.log(apiDelete)
+  if (apiDelete.ok === true) {
+    return apiDelete.json();
+  }
+}

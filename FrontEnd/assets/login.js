@@ -9,6 +9,8 @@ function installConnexion(){
 
     const login = await getLogin(emailInput, passwordInput);
 
+    localStorage.removeItem("token")
+
     try {
       const token = login.token;
       localStorage.setItem("token", token);
@@ -18,6 +20,7 @@ function installConnexion(){
       errorMessage.style.opacity = 1
     }
   });
+
 };
 
 const init = ()=>{
