@@ -317,16 +317,22 @@ input[type="submit"]{
 /** Modal **/
 
 #modal {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+}
+
+#blockedition {
 	background-color: #000000;
 	height: 59px;
-	display: none;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100vw;
 	margin-left : calc(-1 * ((100vw - 100%) / 2));
 }
 
-.buttonmodal {
+#buttonmodal {
 	background-color: unset;
 	border: none;
 	color: #FFFFFF;
@@ -336,4 +342,48 @@ input[type="submit"]{
 
 .editionicon {
 	padding: 0 10px 0 0;
+}
+
+#logoutButton {
+	display: none;
+}
+
+/** Galerie Photo **/
+
+#galleryPhoto {
+	background-color: #FFFFFF;
+	display: none;
+	position: absolute;
+	width: 630px;
+	height: 688px;
+	top: 660px;
+	border-radius: 10px;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#galleryPhoto h3 {
+	font-family: Work Sans;
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 30px;
+	letter-spacing: 0em;
+	text-align: center;
+}
+
+#galleryPhoto .modalGallery {
+	display: flex;
+	gap: 9px;
+	flex-wrap: wrap;
+}
+
+#galleryPhoto .modalGallery figure {
+	display: flex;
+	width: 76.86px;
+	height: 102.57px;
+	flex-direction: column;
+}
+
+#galleryPhoto .modalGallery figcaption {
+	display: none;
 }

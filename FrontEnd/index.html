@@ -13,7 +13,13 @@
 </head>
 <body>
 <aside id="modal" aria-hidden="true" role="modal">
-	<button class="buttonmodal"><i class="fa-regular fa-pen-to-square editionicon"></i>Mode édition</button>
+	<div id="blockedition">
+		<button id="buttonmodal"><i class="fa-regular fa-pen-to-square editionicon"></i>Mode édition</button>
+	</div>
+	<div id="galleryPhoto">
+		<h3>Galerie photo</h3>
+		<div class="modalGallery"></div>
+	</div>
 </aside>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
@@ -22,6 +28,7 @@
 			<li>projets</li>
 			<li>contact</li>
 			<li id="loginButton"><a href="./login.html">login</a></li>
+			<li id="logoutButton">logout</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -41,7 +48,6 @@
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
 		<div class="categories">
-			
 		</div>
 		<div class="gallery">
 		</div>
