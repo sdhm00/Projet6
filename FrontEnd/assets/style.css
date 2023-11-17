@@ -330,6 +330,7 @@ input[type="submit"]{
 	align-items: center;
 	width: 100vw;
 	margin-left : calc(-1 * ((100vw - 100%) / 2));
+	margin-right : calc(-1 * ((100vw - 100%) / 2));
 }
 
 #buttonmodal {

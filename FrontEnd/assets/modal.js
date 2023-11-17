@@ -20,18 +20,21 @@ function modalDisplay (){
     })
 }
 
-function addWork(){
-    const buttonModal = document.getElementsById("buttonmodal")
+function openModal () {
+    const buttonModal = document.getElementById("buttonmodal")
     const galleryPhoto = document.getElementById("galleryPhoto")
     const modalGallery = document.getElementsByClassName("modalGallery")
 
+    galleryPhoto.appendChild(modalGallery)
+
     buttonModal.addEventListener("click",function(){
-        galleryPhoto.style.display="flex";
+        galleryPhoto.style.display = "flex";
     })
+
 }
 
-function removeWorks(){}
+openModal();
 
-modalDisplay()
-// addWork()
-// removeWorks()
+modalDisplay();
+
+
