@@ -20,21 +20,20 @@ function modalDisplay (){
     })
 }
 
+
 function openModal () {
     const buttonModal = document.getElementById("buttonmodal")
-    const galleryPhoto = document.getElementById("galleryPhoto")
     const modalGallery = document.getElementsByClassName("modalGallery")
+    const galleryPhoto = document.getElementById("galleryPhoto")
 
-    galleryPhoto.appendChild(modalGallery)
+    modalGallery = showWorks.cloneNode(true)
 
-    buttonModal.addEventListener("click",function(){
-        galleryPhoto.style.display = "flex";
+    buttonModal.addEventListener ("click", async function(){
+        galleryPhoto.style.display = "unset";
     })
-
 }
 
-openModal();
-
 modalDisplay();
+openModal();
 
 
