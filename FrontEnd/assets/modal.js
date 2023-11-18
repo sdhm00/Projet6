@@ -25,9 +25,7 @@ function openModal () {
     const buttonModal = document.getElementById("buttonmodal")
     const modalGallery = document.getElementsByClassName("modalGallery")
     const galleryPhoto = document.getElementById("galleryPhoto")
-
-    modalGallery = showWorks.cloneNode(true)
-
+    
     buttonModal.addEventListener ("click", async function(){
         galleryPhoto.style.display = "unset";
     })
