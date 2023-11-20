@@ -122,9 +122,19 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+}
+
+#portfolio {
+	margin-top: 140px;
+}
+
+body #portfolio h2 {
+	display: flex;
+	justify-content: center;
 }
 
 /** Ajouts boutons catégories **/
@@ -345,15 +355,25 @@ input[type="submit"]{
 	padding: 0 10px 0 0;
 }
 
+#buttonmodif {
+	display: none;
+	background-color: unset;
+	border: unset;
+	font-size: 14px;
+	height: 18px;
+	top: 690px;
+	left: 670px;
+	position: absolute;
+}
+
 #logoutButton {
 	display: none;
 }
 
 /** Galerie Photo **/
 
-.closebox {
-	display: flex;
-	justify-content: flex-end;
+#closebox {
+	align-self: flex-end;
 }
 
 .closeGallery {
@@ -365,10 +385,15 @@ input[type="submit"]{
 #galleryPhoto {
 	background-color: #FFFFFF;
 	display: none;
-	width: 630px;
+	width: 50%;
 	height: 688px;
 	border-radius: 10px;
 	padding: 30px;
+	flex-direction: column;
+	position: absolute;
+	align-items: center;
+	top: 660px;
+	z-index: 1;
 }
 
 #galleryPhoto h3 {
@@ -383,9 +408,10 @@ input[type="submit"]{
 
 #galleryPhoto .modalGallery {
 	display: flex;
-	gap: 9px;
 	flex-wrap: wrap;
-	padding: 0 105px ;
+	padding: 30px 70px ;
+	row-gap: 30px;
+	justify-content: space-between;
 }
 
 #galleryPhoto .modalGallery figure {
@@ -397,4 +423,23 @@ input[type="submit"]{
 
 #galleryPhoto .modalGallery figcaption {
 	display: none;
+}
+
+.barre {
+	border: 1px solid #B3B3B3;
+	width: 420px;
+	display: flex;
+	justify-content: center;
+}
+
+.addButton {
+	width: 237px;
+	height: 36px;
+	border: 1px solid #1D6154;
+	background-color: #1D6154;
+	color: #FFFFFF;
+	border-radius: 60px;
+	font-family: Syne;
+	font-size: 14px;
+	text-align: center;
 }

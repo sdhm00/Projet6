@@ -3,11 +3,15 @@ function modalDisplay (){
     const loginButton = document.getElementById("loginButton")
     const logoutButton = document.getElementById("logoutButton")
     const token = localStorage.getItem("token")
+    const buttonModif = document.getElementById("buttonmodif")
+    const hideCategories = document.querySelector(".categories")
 
     if (localStorage !== null && token !== null) {
-        loginButton.style.display = "none"
-        logoutButton.style.display = "unset"
+        loginButton.style.display = "none";
+        logoutButton.style.display = "unset";
+        buttonModif.style.display = "unset";
         modal.style.display = "flex";
+        hideCategories.style.opacity = 0
     }
     else {
         modal.style.display = "none";
@@ -20,18 +24,36 @@ function modalDisplay (){
     })
 }
 
+function showWorksModal (apiWorks) {
+    const modalGallery = document.querySelector(".modalGallery")
+    modalGallery.innerHTML = "";
+    for (let i = 0; i < apiWorks.length; i++) {
+      const projetDiv = document.createElement("figure")
+      const projetImg = document.createElement("img")
+  
+      projetImg.src = apiWorks[i].imageUrl
+  
+      projetDiv.appendChild(projetImg)
+      modalGallery.appendChild(projetDiv)
+    }
+  }
 
-function openModal () {
-    const buttonModal = document.getElementById("buttonmodal")
-    const modalGallery = document.getElementsByClassName("modalGallery")
-    const galleryPhoto = document.getElementById("galleryPhoto")
+
+function openModif () {
+    const buttonModif = document.getElementById("buttonmodif");
+    const galleryPhoto = document.getElementById("galleryPhoto");
     
-    buttonModal.addEventListener ("click", async function(){
-        galleryPhoto.style.display = "unset";
+    buttonModif.addEventListener ("click", async function(){
+        galleryPhoto.style.display = "flex";
+        const works = await getWorks()
+        showWorksModal(works)
     })
 }
 
+
+
 modalDisplay();
-openModal();
+openModif();
+
 
 
