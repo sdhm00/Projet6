@@ -135,6 +135,8 @@ li:hover {
 body #portfolio h2 {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	gap: 10px;
 }
 
 /** Ajouts boutons catégories **/
@@ -182,17 +184,21 @@ body #portfolio h2 {
 	width: 100%;
 
 }
+
 #contact {
 	width: 50%;
 margin: auto;
 }
+
 #contact > * {
 	text-align: center;
 
 }
+
 #contact h2{
 	margin-bottom: 20px;
 }
+
 #contact form {
 	text-align: left;
 	margin-top:30px;
@@ -361,9 +367,6 @@ input[type="submit"]{
 	border: unset;
 	font-size: 14px;
 	height: 18px;
-	top: 690px;
-	left: 670px;
-	position: absolute;
 }
 
 #logoutButton {
@@ -385,7 +388,7 @@ input[type="submit"]{
 #galleryPhoto {
 	background-color: #FFFFFF;
 	display: none;
-	width: 50%;
+	width: 630px;
 	height: 688px;
 	border-radius: 10px;
 	padding: 30px;

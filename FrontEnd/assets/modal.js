@@ -5,12 +5,14 @@ function modalDisplay (){
     const token = localStorage.getItem("token")
     const buttonModif = document.getElementById("buttonmodif")
     const hideCategories = document.querySelector(".categories")
+    const titreProjet = document.getElementById("titreprojet")
 
     if (localStorage !== null && token !== null) {
         loginButton.style.display = "none";
         logoutButton.style.display = "unset";
         buttonModif.style.display = "unset";
         modal.style.display = "flex";
+        titreProjet.style.marginLeft = "90px"
         hideCategories.style.opacity = 0
     }
     else {
@@ -36,7 +38,7 @@ function showWorksModal (apiWorks) {
       projetDiv.appendChild(projetImg)
       modalGallery.appendChild(projetDiv)
     }
-  }
+}
 
 
 function openModif () {
