@@ -377,6 +377,8 @@ input[type="submit"]{
 
 #closebox {
 	align-self: flex-end;
+	background-color: unset;
+	border: none;
 }
 
 .closeGallery {
@@ -397,6 +399,7 @@ input[type="submit"]{
 	align-items: center;
 	top: 660px;
 	z-index: 1;
+	justify-content: space-between;
 }
 
 #galleryPhoto h3 {
@@ -412,7 +415,7 @@ input[type="submit"]{
 #galleryPhoto .modalGallery {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 30px 70px ;
+	padding: 30px 90px ;
 	row-gap: 30px;
 	justify-content: space-between;
 }
@@ -428,11 +431,18 @@ input[type="submit"]{
 	display: none;
 }
 
+.blockButton {
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	align-items: center;
+}
+
 .barre {
 	border: 1px solid #B3B3B3;
 	width: 420px;
 	display: flex;
-	justify-content: center;
+	margin: 30px;
 }
 
 .addButton {
@@ -445,4 +455,5 @@ input[type="submit"]{
 	font-family: Syne;
 	font-size: 14px;
 	text-align: center;
+	margin: 20px;
 }

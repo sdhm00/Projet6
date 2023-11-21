@@ -47,15 +47,24 @@ function openModif () {
     
     buttonModif.addEventListener ("click", async function(){
         galleryPhoto.style.display = "flex";
-        const works = await getWorks()
-        showWorksModal(works)
+        const works = await getWorks();
+        showWorksModal(works);
     })
 }
 
+function closeModif () {
+    const buttonClose = document.getElementById("closeGallery");
+    const galleryPhoto = document.getElementById("galleryPhoto");
 
+    buttonClose.addEventListener ("click", function(){
+        galleryPhoto.style.display = "none";
+    })
+}
 
 modalDisplay();
 openModif();
+closeModif();
+
 
 
 
