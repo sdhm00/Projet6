@@ -421,10 +421,8 @@ input[type="submit"]{
 }
 
 #galleryPhoto .modalGallery figure {
-	display: flex;
-	width: 76.86px;
-	height: 102.57px;
-	flex-direction: column;
+	display: inline-block;
+	position: relative;
 }
 
 #galleryPhoto .modalGallery figcaption {
@@ -456,4 +454,28 @@ input[type="submit"]{
 	font-size: 14px;
 	text-align: center;
 	margin: 20px;
+}
+
+#galleryPhoto .modalGallery figure img {
+	width: 76.86px;
+	height: 102.57px;
+}
+
+.binblock {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.trash {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 9px;
+	color: #FFFFFF;
+	width: 17px;
+	height: 17px;
+	background-color: #000000;
+	border-radius: 2px;
+	margin: 5px;
 }

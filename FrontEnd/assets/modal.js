@@ -32,39 +32,71 @@ function showWorksModal (apiWorks) {
     for (let i = 0; i < apiWorks.length; i++) {
       const projetDiv = document.createElement("figure")
       const projetImg = document.createElement("img")
+      const binBlock = document.createElement("span")
+      const vectorBin = document.createElement("i")
+
+      binBlock.classList.add("binblock")
+      vectorBin.classList.add("fa","fa-solid", "fa-trash-can", "trash")
+      vectorBin.setAttribute("data-index", i);
   
       projetImg.src = apiWorks[i].imageUrl
   
+      binBlock.appendChild(vectorBin)
       projetDiv.appendChild(projetImg)
+      projetDiv.appendChild(binBlock)
       modalGallery.appendChild(projetDiv)
+
+      vectorBin.addEventListener("click", function(event) {
+        const workId = event.target.getAttribute("data-index");
+        deleteWorks(apiDelete);
+    });
     }
 }
-
 
 function openModif () {
     const buttonModif = document.getElementById("buttonmodif");
     const galleryPhoto = document.getElementById("galleryPhoto");
     
-    buttonModif.addEventListener ("click", async function(){
+    buttonModif.addEventListener ("click", async function(event){
+        event.stopPropagation();
         galleryPhoto.style.display = "flex";
         const works = await getWorks();
         showWorksModal(works);
     })
+
+    document.addEventListener("click", function(event) {
+        if (!galleryPhoto.contains(event.target) && event.target !== buttonModif) {
+            galleryPhoto.style.display = "none";
+        }
+    });
 }
 
 function closeModif () {
-    const buttonClose = document.getElementById("closeGallery");
+    const buttonClose = document.getElementById("closebox");
     const galleryPhoto = document.getElementById("galleryPhoto");
 
-    buttonClose.addEventListener ("click", function(){
+    buttonClose.addEventListener ("click", function(event){
         galleryPhoto.style.display = "none";
+        event.stopPropagation();
     })
 }
+
+// function deleteWorks (apiDelete) {
+//     const deleteButton = document.querySelectorAll(".binBlock")
+
+//     deleteButton.forEach((icon) => {
+//         icon.addEventListener ("click", (e) => {
+//             e.preventDefault();
+//             const workId = e.currentTarget.Id;
+//             const userToken = localStorage.getItem("token");
+//         })
+//     })
+// }
+
+
+function addWorks () {}
 
 modalDisplay();
 openModif();
 closeModif();
-
-
-
-
+deleteWorks()
