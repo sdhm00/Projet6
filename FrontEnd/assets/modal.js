@@ -37,7 +37,8 @@ function showWorksModal (apiWorks) {
 
       binBlock.classList.add("binblock")
       vectorBin.classList.add("fa","fa-solid", "fa-trash-can", "trash")
-      vectorBin.setAttribute("data-index", i);
+
+      vectorBin.id = apiWorks[i].id
   
       projetImg.src = apiWorks[i].imageUrl
   
@@ -45,11 +46,6 @@ function showWorksModal (apiWorks) {
       projetDiv.appendChild(projetImg)
       projetDiv.appendChild(binBlock)
       modalGallery.appendChild(projetDiv)
-
-      vectorBin.addEventListener("click", function(event) {
-        const workId = event.target.getAttribute("data-index");
-        deleteWorks(apiDelete);
-    });
     }
 }
 
@@ -81,22 +77,26 @@ function closeModif () {
     })
 }
 
-// function deleteWorks (apiDelete) {
-//     const deleteButton = document.querySelectorAll(".binBlock")
 
-//     deleteButton.forEach((icon) => {
-//         icon.addEventListener ("click", (e) => {
-//             e.preventDefault();
-//             const workId = e.currentTarget.Id;
-//             const userToken = localStorage.getItem("token");
-//         })
-//     })
-// }
 
+function deleteWork () {
+    const modalGallery = document.querySelector(".modalGallery");
+
+    modalGallery.addEventListener("click", async function(event) {
+        if (event.target.classList.contains("trash")) {
+            event.preventDefault();
+            
+            const workId = event.target.id;
+            const userToken = localStorage.getItem("token");
+
+            const deleteClick = await getDelete(workId, userToken);
+        }
+    });
+}
 
 function addWorks () {}
 
 modalDisplay();
 openModif();
 closeModif();
-deleteWorks()
+deleteWork();
