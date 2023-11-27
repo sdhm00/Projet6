@@ -40,14 +40,17 @@ async function postWorks(){
   }
 }
 
-async function getDelete(Id, userToken){
-  const apiDelete = await fetch(baseUrl + "/works/" + Id, {
+async function getDelete(id, userToken){
+  console.log(id, userToken)
+  const apiDelete = await fetch(baseUrl + "/works/" + id, {
     method : "DELETE",
-    headers : { Authorization : "BearerAuth" + userToken},
-    body: JSON.stringify({ "Id" : Id, "userToken" : userToken })
+    headers : { Authorization : "Bearer " + userToken},
   })
   console.log(apiDelete)
   if (apiDelete.ok === true) {
-    return apiDelete.json();
+    return true;
+  }
+  else {
+    return false
   }
 }

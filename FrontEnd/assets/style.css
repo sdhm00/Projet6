@@ -53,6 +53,7 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -251,10 +252,6 @@ header nav a {
 	color: unset;
 }
 
-header nav a:focus {
-	font-weight: 600;
-}
-
 #login button {
 	background-color: unset;
 	border: none;
@@ -375,6 +372,13 @@ input[type="submit"]{
 
 /** Galerie Photo **/
 
+.titlebox {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 10%;
+}
+
 #closebox {
 	align-self: flex-end;
 	background-color: unset;
@@ -396,10 +400,8 @@ input[type="submit"]{
 	padding: 30px;
 	flex-direction: column;
 	position: absolute;
-	align-items: center;
 	top: 660px;
 	z-index: 1;
-	justify-content: space-between;
 }
 
 #galleryPhoto h3 {
@@ -409,7 +411,6 @@ input[type="submit"]{
 	line-height: 30px;
 	letter-spacing: 0em;
 	text-align: center;
-
 }
 
 #galleryPhoto .modalGallery {
@@ -417,7 +418,8 @@ input[type="submit"]{
 	flex-wrap: wrap;
 	padding: 30px 90px ;
 	row-gap: 30px;
-	justify-content: space-between;
+	column-gap: 10px;
+	height: 60%;
 }
 
 #galleryPhoto .modalGallery figure {
@@ -427,6 +429,10 @@ input[type="submit"]{
 
 #galleryPhoto .modalGallery figcaption {
 	display: none;
+}
+
+.addbox {
+	height: 10%;
 }
 
 .blockButton {
@@ -479,3 +485,4 @@ input[type="submit"]{
 	border-radius: 2px;
 	margin: 5px;
 }
+

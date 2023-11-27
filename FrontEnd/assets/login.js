@@ -1,3 +1,11 @@
+const currentUrl = window.location.pathname;
+
+if (currentUrl.includes('login.html')) {
+  const loginActive = document.getElementById('loginUrl');
+  loginActive.style.fontWeight = 600;
+}
+
+
 function installConnexion(){
   const form = document.getElementById("form");
   const errorMessage = document.getElementById("errorMessage");
@@ -20,10 +28,10 @@ function installConnexion(){
       errorMessage.style.opacity = 1
     }
   });
-
 };
 
 const init = ()=>{
   installConnexion()
 }
 init();
+
