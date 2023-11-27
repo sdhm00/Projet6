@@ -86,10 +86,10 @@ function deleteWork () {
         if (event.target.classList.contains("trash")) {
             event.preventDefault();
             
-            const workId = event.target.id;
+            const Id = event.target.id;
             const userToken = localStorage.getItem("token");
 
-            const deleteClick = await getDelete(workId, userToken);
+            const deleteClick = await getDelete(Id, userToken);
         }
     });
 }
