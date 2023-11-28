@@ -28,7 +28,41 @@
 				<button class="addButton">Ajouter une photo</button>
 			</div>
 		</div>
-		
+	</div>
+	<div class="addFormulaire">
+		<div class="titlebox">
+			<button id="closebox"><i class="fa-solid fa-xmark closeGallery"></i></button>
+			<h3>Ajout photo</h3>
+		</div>
+		<form id="addform">
+			<span  class="imgInput">
+				<label for="image"><i class="fa-regular fa-image img-vector"></i></label>
+				<button id="addImgButton">+ Ajouter photo</button>
+				<input type="file" name="image" id="addimage" accept="image/png, image/jpeg">
+				<p id="add-img-text">jpg, png : 4mo max</p>
+			</span>
+			<div id="formStyle">
+				<span class="spanTitle">
+					<label for="titre">Titre</label>
+					<input type="titre" name="titre" id="titre">
+				</span>
+				<span class="spanCategories">
+					<label for="categorie">Catégorie</label>
+					<select type="categorie" name="categorie" id="categorie">
+						<option value="" selected disabled hidden></option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+				</span>
+			</div>
+		</form>
+		<div class="addbox">
+			<div class="blockButton">
+				<div class="barre"></div>
+				<button class="validateButton">Valider</button>
+			</div>
+		</div>
 	</div>
 </aside>
 <header>

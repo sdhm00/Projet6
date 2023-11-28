@@ -33,6 +33,7 @@ async function postWorks(){
   const apiPost = await fetch(baseUrl + "/works", {
     method : "POST",
     headers : {"Content-type" : "application/json"},
+    body : JSON.stringify({ "image" : image, "title" : title, "category" : category})
   })
   console.log(apiPost)
   if (apiPost.ok === true) {

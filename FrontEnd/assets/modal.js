@@ -97,7 +97,18 @@ function deleteWork () {
     });
 }
 
-function addWorks () {}
+function addWorks () {
+    const openPost = document.getElementsByClassName("addButton");
+    const galleryPhoto = document.getElementById("galleryPhoto");
+
+    openPost.addEventListener ("click", async function(event){
+        event.stopPropagation();
+        const addForm = document.getElementsByClassName("addFormulaire")
+
+        galleryPhoto.style.display = "none";
+        addForm.style.display = "flex";
+    })
+}
 
 modalDisplay();
 openModif();
