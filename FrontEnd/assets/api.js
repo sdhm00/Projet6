@@ -29,11 +29,11 @@ async function getLogin(email, password){
   }
 }
 
-async function postWorks(){
+async function postWorks(addImgButton, titre, categorie){
   const apiPost = await fetch(baseUrl + "/works", {
     method : "POST",
     headers : {"Content-type" : "application/json"},
-    body : JSON.stringify({ "image" : image, "title" : title, "category" : category})
+    body : JSON.stringify({ "addImgButton" : addImgButton, "titre" : titre, "categorie" : categorie})
   })
   console.log(apiPost)
   if (apiPost.ok === true) {

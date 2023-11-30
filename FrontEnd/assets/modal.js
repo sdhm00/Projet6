@@ -98,19 +98,90 @@ function deleteWork () {
 }
 
 function addWorks () {
-    const openPost = document.getElementsByClassName("addButton");
     const galleryPhoto = document.getElementById("galleryPhoto");
+    const openPost = document.getElementById("addButton");
+    const addForm = document.getElementById("addFormulaire");
 
     openPost.addEventListener ("click", async function(event){
         event.stopPropagation();
-        const addForm = document.getElementsByClassName("addFormulaire")
-
         galleryPhoto.style.display = "none";
         addForm.style.display = "flex";
+        const categories = await getCategories()
+        selectCategories(categories)
     })
+
+    const addImgButton = document.getElementById("addImgButton");
+    const inputImg = document.getElementById ("addimage");
+
+    addImgButton.addEventListener("click", function(event) {
+        event.stopPropagation();
+        inputImg.click();
+    });
+
+    inputImg.addEventListener("change", function(event) {
+        event.stopPropagation();
+        const spanImg = document.getElementById("imgInput");
+        const previewImg = document.createElement("img");
+        const vectorImg = document.getElementById("img-vector");
+        const pImg = document.getElementById ("add-img-text");
+        const addImgButton = document.getElementById("addImgButton");
+
+        spanImg.appendChild(previewImg)
+
+        const selectedFile = this.files[0];
+        if (selectedFile) {
+            const fileSizeInMB = selectedFile.size
+            if (fileSizeInMB > 4000000) {
+                alert("L'image doit faire moins de 4Mo");
+                this.value = null;
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImg.src = e.target.result;
+            };
+            reader.readAsDataURL(selectedFile);
+            vectorImg.style.display = "none"
+            pImg.style.display = "none"
+            addImgButton.style.display = "none"
+        }
+    });
+
+    addForm.addEventListener("submit", async function(event) {
+        event.preventDefault();
+        const addImgButton = document.getElementById("addImgButton").value;
+        const titreImg = document.getElementById("titre").value;
+        const catImg = document.getElementById("categorie").value;
+
+        try {
+            const post = await postWorks(addImgButton, titreImg, catImg);
+        }
+        catch (error) {
+        }
+    })
+}
+
+function selectCategories (apiCategories) {
+    const addForm = document.getElementById("addFormulaire");
+
+    if (addForm.style.display = "flex") {
+        const spanCategories = document.querySelector("#categorie")
+        const optionObjets = document.createElement("option")
+        const optionAppartements = document.createElement("option")
+        const optionHotelEtResto = document.createElement("option")
+
+        optionObjets.innerText = apiCategories[0].name
+        optionAppartements.innerText = apiCategories[1].name
+        optionHotelEtResto.innerText = apiCategories[2].name
+
+        spanCategories.appendChild(optionObjets)
+        spanCategories.appendChild(optionAppartements)
+        spanCategories.appendChild(optionHotelEtResto)
+    }
 }
 
 modalDisplay();
 openModif();
 closeModif();
 deleteWork();
+addWorks();

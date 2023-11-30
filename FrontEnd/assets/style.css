@@ -449,7 +449,7 @@ input[type="submit"]{
 	margin: 30px;
 }
 
-.addButton {
+#addButton {
 	width: 237px;
 	height: 36px;
 	border: 1px solid #1D6154;
@@ -486,7 +486,7 @@ input[type="submit"]{
 	margin: 5px;
 }
 
-.addFormulaire {
+#addFormulaire {
 	background-color: #FFFFFF;
 	display: none;
 	width: 630px;
@@ -499,7 +499,7 @@ input[type="submit"]{
 	z-index: 1;
 }
 
-.addFormulaire h3 {
+#addFormulaire h3 {
 	font-family: Work Sans;
 	font-size: 26px;
 	font-weight: 400;
@@ -529,13 +529,14 @@ input[type="submit"]{
 	background-color: #e8f1f6;
 }
 
-.img-vector {
+#img-vector {
 	font-size: 76px;
 	color: #B9C5CC;
+	display: flex;
 }
 
 #addImgButton {
-	display: flex;
+	display: block flex;
 	width: 173px;
 	height: 36px;
 	border-radius: 50px;
@@ -564,6 +565,14 @@ input[type="submit"]{
 
 .imgInput input {
 	display: none;
+}
+
+#add-img-text {
+	display: flex;
+}
+
+.imgInput img {
+	height: 100%;
 }
 
 #formStyle {
