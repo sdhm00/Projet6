@@ -29,15 +29,23 @@ async function getLogin(email, password){
   }
 }
 
-async function postWorks(addImgButton, titre, categorie){
-  const apiPost = await fetch(baseUrl + "/works", {
-    method : "POST",
-    headers : {"Content-type" : "application/json"},
-    body : JSON.stringify({ "addImgButton" : addImgButton, "titre" : titre, "categorie" : categorie})
-  })
-  console.log(apiPost)
-  if (apiPost.ok === true) {
-    return apiPost.json();
+async function postWorks(formData, userToken){
+  try {
+    const apiPost = await fetch(baseUrl + "/works", {
+      method : "POST",
+      headers : { Authorization : "Bearer " + userToken},
+      body : formData,
+    })
+    console.log(apiPost)
+    if (apiPost.ok) {
+      return apiPost.json();
+    } else {
+      throw new Error('Network response was not ok.');
+    }
+  }
+  catch (error) {
+    console.error('Error in postWorks:', error);
+    throw error;
   }
 }
 

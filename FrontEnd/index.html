@@ -31,7 +31,10 @@
 	</div>
 	<div id="addFormulaire">
 		<div class="titlebox">
-			<button id="closebox"><i class="fa-solid fa-xmark closeGallery"></i></button>
+			<div class="returnBlock">
+				<button id="returnAdd"><i class="fa-solid fa-arrow-left returnArrow"></i></button>
+				<button id="closeadd"><i class="fa-solid fa-xmark closeGallery"></i></button>
+			</div>
 			<h3>Ajout photo</h3>
 		</div>
 		<form id="addform">
@@ -44,11 +47,11 @@
 			<div id="formStyle">
 				<span class="spanTitle">
 					<label for="titre">Titre</label>
-					<input type="titre" name="titre" id="titre">
+					<input type="text" name="titre" id="titre">
 				</span>
 				<span class="spanCategories">
 					<label for="categorie">Catégorie</label>
-					<select type="categorie" name="categorie" id="categorie">
+					<select type="text" name="categorie" id="categorie">
 						<option value="" selected disabled hidden></option>
 					</select>
 				</span>
@@ -57,7 +60,7 @@
 		<div class="addbox">
 			<div class="blockButton">
 				<div class="barre"></div>
-				<button class="validateButton">Valider</button>
+				<button type="submit" id="validateButton">Valider</button>
 			</div>
 		</div>
 	</div>

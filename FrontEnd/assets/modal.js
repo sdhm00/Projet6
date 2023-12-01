@@ -77,8 +77,6 @@ function closeModif () {
     })
 }
 
-
-
 function deleteWork () {
     const modalGallery = document.querySelector(".modalGallery");
 
@@ -97,6 +95,28 @@ function deleteWork () {
     });
 }
 
+function closeAdd () {
+    const buttonClose = document.getElementById("closeadd");
+    const addForm = document.getElementById("addFormulaire");
+
+    buttonClose.addEventListener ("click", function(event){
+        addForm.style.display = "none";
+        event.stopPropagation();
+    })
+}
+
+function returnToGallery () {
+    const buttonReturn = document.getElementById("returnAdd");
+    const addForm = document.getElementById("addFormulaire");
+    const galleryPhoto = document.getElementById("galleryPhoto");
+
+    buttonReturn.addEventListener ("click", function(event){
+        addForm.style.display = "none";
+        galleryPhoto.style.display = "flex";
+        event.stopPropagation();
+    })
+}
+
 function addWorks () {
     const galleryPhoto = document.getElementById("galleryPhoto");
     const openPost = document.getElementById("addButton");
@@ -109,6 +129,12 @@ function addWorks () {
         const categories = await getCategories()
         selectCategories(categories)
     })
+
+    document.addEventListener("click", function(event) {
+        if (!addForm.contains(event.target) && event.target !== openPost) {
+            addForm.style.display = "none";
+        }
+    });
 
     const addImgButton = document.getElementById("addImgButton");
     const inputImg = document.getElementById ("addimage");
@@ -146,19 +172,54 @@ function addWorks () {
             addImgButton.style.display = "none"
         }
     });
+}
+
+function sendWork() {
+    const addForm = document.getElementById("addFormulaire");
+    const sendButton = document.getElementById("validateButton")
+
+    function changeButton() {
+        const titreImg = document.getElementById("titre").value;
+        const catImg = document.getElementById("categorie").value;
+        const inputImg = document.getElementById("addimage");
+        const selectedFile = inputImg.files[0];
+
+        if (titreImg && catImg && selectedFile) {
+            sendButton.style.backgroundColor = "#1D6154";
+            sendButton.disabled = false;
+        } else {
+            sendButton.style.backgroundColor = "#A7A7A7";
+            sendButton.disabled = true;
+        }
+    }
+
+    document.getElementById("titre").addEventListener("input", changeButton);
+    document.getElementById("categorie").addEventListener("input", changeButton);
+    document.getElementById("addimage").addEventListener("change", changeButton);
 
     addForm.addEventListener("submit", async function(event) {
         event.preventDefault();
-        const addImgButton = document.getElementById("addImgButton").value;
-        const titreImg = document.getElementById("titre").value;
-        const catImg = document.getElementById("categorie").value;
+        const inputImg = document.getElementById("addimage");
+        const selectedFile = inputImg.files[0];
+
+        const titre = document.getElementById("titre").value;
+        const categorie = document.getElementById("categorie").value;
+        const userToken = localStorage.getItem("token");
+
+        const formData = new FormData();
+        formData.append("titre", titre);
+        formData.append("categorie", categorie);
+        formData.append("addimage", selectedFile);
 
         try {
-            const post = await postWorks(addImgButton, titreImg, catImg);
+            const post = await postWorks(formData, userToken);
         }
-        catch (error) {
+        catch (error){
+            alert("error")
         }
     })
+
+    
 }
 
 function selectCategories (apiCategories) {
@@ -185,3 +246,6 @@ openModif();
 closeModif();
 deleteWork();
 addWorks();
+closeAdd();
+returnToGallery();
+sendWork();

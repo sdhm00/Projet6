@@ -386,8 +386,6 @@ input[type="submit"]{
 }
 
 .closeGallery {
-	display: flex;
-	justify-content: center;
 	font-size: 24px;
 }
 
@@ -508,6 +506,25 @@ input[type="submit"]{
 	text-align: center;
 }
 
+.returnBlock {
+	display: flex;
+	justify-content: space-between;
+}
+
+#returnAdd {
+	background-color: unset;
+	border: none;
+}
+
+.returnArrow {
+	font-size: 21px;
+}
+
+#closeadd {
+	background-color: unset;
+	border: none;
+}
+
 #addform {
 	display: flex;
 	align-items: center;
@@ -587,6 +604,12 @@ input[type="submit"]{
 	box-shadow: 0px 4px 14px 0px #00000017;
 	background-color: #FFFFFF;
 	border: unset;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 16px;
+	letter-spacing: 0em;
+	text-align: left;
 }
 
 .spanTitle, .spanCategories {
@@ -601,7 +624,7 @@ input[type="submit"]{
 	text-align: left;
 }
 
-.validateButton {
+#validateButton {
 	width: 237px;
 	height: 36px;
 	border-radius: 60px;
