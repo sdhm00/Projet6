@@ -33,8 +33,8 @@ async function postWorks(formData, userToken){
   try {
     const apiPost = await fetch(baseUrl + "/works", {
       method : "POST",
-      headers : { Authorization : "Bearer " + userToken},
-      body : formData,
+      headers : { Authorization : "Bearer " + userToken },
+      body : formData
     })
     console.log(apiPost)
     if (apiPost.ok) {

@@ -37,32 +37,35 @@
 			</div>
 			<h3>Ajout photo</h3>
 		</div>
-		<form id="addform">
-			<span id="imgInput" class="imgInput">
-				<label for="image"><i class="fa-regular fa-image" id="img-vector"></i></label>
-				<button type="button" id="addImgButton">+ Ajouter photo</button>
-				<input type="file" name="image" id="addimage" class="input-file" accept="image/png, image/jpeg">
-				<p id="add-img-text">jpg, png : 4mo max</p>
-			</span>
-			<div id="formStyle">
-				<span class="spanTitle">
-					<label for="titre">Titre</label>
-					<input type="text" name="titre" id="titre">
+		<form id="formWork">
+			<div id="addform">
+				<span id="imgInput" class="imgInput">
+					<label for="image"><i class="fa-regular fa-image" id="img-vector"></i></label>
+					<button type="button" id="addImgButton">+ Ajouter photo</button>
+					<input type="file" name="image" id="addimage" class="input-file" accept="image/png, image/jpeg">
+					<p id="add-img-text">jpg, png : 4mo max</p>
 				</span>
-				<span class="spanCategories">
-					<label for="categorie">Catégorie</label>
-					<select type="text" name="categorie" id="categorie">
-						<option value="" selected disabled hidden></option>
-					</select>
-				</span>
+				<div id="formStyle">
+					<span class="spanTitle">
+						<label for="titre">Titre</label>
+						<input type="text" name="titre" id="titre">
+					</span>
+					<span class="spanCategories">
+						<label for="categorie">Catégorie</label>
+						<select type="text" name="categorie" id="categorie">
+							<option value="" selected disabled hidden></option>
+						</select>
+					</span>
+				</div>
+			</div>
+			<div class="addbox">
+				<div class="blockButton">
+					<div class="barre"></div>
+					<button type="submit" id="validateButton">Valider</button>
+				</div>
 			</div>
 		</form>
-		<div class="addbox">
-			<div class="blockButton">
-				<div class="barre"></div>
-				<button type="submit" id="validateButton">Valider</button>
-			</div>
-		</div>
+		
 	</div>
 </aside>
 <header>

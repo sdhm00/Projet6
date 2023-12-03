@@ -525,6 +525,13 @@ input[type="submit"]{
 	border: none;
 }
 
+#formWork {
+	height: 90%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+}
+
 #addform {
 	display: flex;
 	align-items: center;
@@ -532,7 +539,6 @@ input[type="submit"]{
 	padding: 30px 90px ;
 	row-gap: 30px;
 	column-gap: 10px;
-	height: 60%;
 }
 
 .imgInput {

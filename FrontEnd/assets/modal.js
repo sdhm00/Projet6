@@ -175,7 +175,7 @@ function addWorks () {
 }
 
 function sendWork() {
-    const addForm = document.getElementById("addFormulaire");
+    const addForm = document.getElementById("formWork");
     const sendButton = document.getElementById("validateButton")
 
     function changeButton() {
@@ -218,8 +218,6 @@ function sendWork() {
             alert("error")
         }
     })
-
-    
 }
 
 function selectCategories (apiCategories) {
