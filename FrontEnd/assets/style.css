@@ -412,7 +412,6 @@ input[type="submit"]{
 	position: absolute;
 	top: 660px;
 	z-index: 1;
-	justify-content: space-between;
 }
 
 #galleryPhoto h3 {
@@ -443,6 +442,7 @@ input[type="submit"]{
 
 .addbox {
 	height: 20%;
+	margin-top: auto;
 }
 
 .blockButton {

@@ -203,6 +203,7 @@ function sendWork() {
         event.preventDefault();
         const inputImg = document.getElementById("addimage");
         const selectedFile = inputImg.files[0];
+        const addImgButton = document.getElementById("addImgButton");
 
         const titre = document.getElementById("titre").value;
         const categorie = document.getElementById("categorie").value;
