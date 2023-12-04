@@ -30,6 +30,7 @@ async function getLogin(email, password){
 }
 
 async function postWorks(formData, userToken){
+  console.log(formData, userToken)
   try {
     const apiPost = await fetch(baseUrl + "/works", {
       method : "POST",

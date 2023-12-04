@@ -52,10 +52,12 @@ function showWorksModal (apiWorks) {
 function openModif () {
     const buttonModif = document.getElementById("buttonmodif");
     const galleryPhoto = document.getElementById("galleryPhoto");
+    const galleryPage = document.getElementById("galleryPage");
     
     buttonModif.addEventListener ("click", async function(event){
         event.stopPropagation();
         galleryPhoto.style.display = "flex";
+        galleryPage.style.display = "flex";
         const works = await getWorks();
         showWorksModal(works);
     })
@@ -63,6 +65,7 @@ function openModif () {
     document.addEventListener("click", function(event) {
         if (!galleryPhoto.contains(event.target) && event.target !== buttonModif) {
             galleryPhoto.style.display = "none";
+            galleryPage.style.display = "none";
         }
     });
 }
@@ -88,9 +91,7 @@ function deleteWork () {
             const userToken = localStorage.getItem("token");
 
             const deleteClick = await getDelete(id, userToken);
-
-            const works = await getWorks();
-            showWorksModal(works);
+            refreshContent();
         }
     });
 }
@@ -113,6 +114,7 @@ function returnToGallery () {
     buttonReturn.addEventListener ("click", function(event){
         addForm.style.display = "none";
         galleryPhoto.style.display = "flex";
+        refreshContent();
         event.stopPropagation();
     })
 }
@@ -206,13 +208,17 @@ function sendWork() {
         const categorie = document.getElementById("categorie").value;
         const userToken = localStorage.getItem("token");
 
+        console.log(titre, categorie, selectedFile)
+
         const formData = new FormData();
-        formData.append("titre", titre);
-        formData.append("categorie", categorie);
-        formData.append("addimage", selectedFile);
+        formData.append("title", titre);
+        formData.append("category", categorie);
+        formData.append("image", selectedFile);
 
         try {
             const post = await postWorks(formData, userToken);
+            refreshContent();
+            addForm.reset();
         }
         catch (error){
             alert("error")
@@ -230,13 +236,23 @@ function selectCategories (apiCategories) {
         const optionHotelEtResto = document.createElement("option")
 
         optionObjets.innerText = apiCategories[0].name
+        optionObjets.value = apiCategories[0].id
         optionAppartements.innerText = apiCategories[1].name
+        optionAppartements.value = apiCategories[1].id
         optionHotelEtResto.innerText = apiCategories[2].name
+        optionHotelEtResto.value = apiCategories[2].id
+
 
         spanCategories.appendChild(optionObjets)
         spanCategories.appendChild(optionAppartements)
         spanCategories.appendChild(optionHotelEtResto)
     }
+}
+
+async function refreshContent() {
+    const works = await getWorks();
+    showWorks(works);
+    showWorksModal(works);
 }
 
 modalDisplay();
