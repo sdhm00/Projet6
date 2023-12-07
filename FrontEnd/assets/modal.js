@@ -91,13 +91,13 @@ function deleteWork () {
 
             try {
                 const deleteClick = await getDelete(id, userToken);
-                    refreshContent();
+                refreshContent()
             } catch (error) {
                 alert("error");
             }
         }
-    });
 
+    });
 }
 
 function closeAdd () {
@@ -254,10 +254,11 @@ function selectCategories (apiCategories) {
 }
 
 async function refreshContent(event) {
+    event.stopPropagation();
     const works = await getWorks();
     showWorks(works);
     showWorksModal(works);
-    event.preventDefault();
+
 }
 
 modalDisplay();

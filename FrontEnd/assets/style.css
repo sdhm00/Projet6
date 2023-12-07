@@ -403,7 +403,7 @@ input[type="submit"]{
 
 #galleryPhoto {
 	background-color: #FFFFFF;
-	display: flex;
+	display: none;
 	width: 630px;
 	height: 688px;
 	border-radius: 10px;
