@@ -223,6 +223,8 @@ function sendWork() {
         try {
             const post = await postWorks(formData, userToken);
             refreshContent();
+            closeAdd()
+            closeModif()
         }
         catch (error){
             alert("error")
