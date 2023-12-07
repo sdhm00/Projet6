@@ -55,11 +55,11 @@ function openModif () {
     const galleryPage = document.getElementById("galleryPage");
     
     buttonModif.addEventListener ("click", async function(event){
-        event.stopPropagation();
         galleryPhoto.style.display = "flex";
         galleryPage.style.display = "flex";
         const works = await getWorks();
         showWorksModal(works);
+        event.stopPropagation();
     })
 
     document.addEventListener("click", function(event) {
@@ -89,10 +89,15 @@ function deleteWork () {
             const id = event.target.id;
             const userToken = localStorage.getItem("token");
 
-            const deleteClick = await getDelete(id, userToken);
-            refreshContent();
+            try {
+                const deleteClick = await getDelete(id, userToken);
+                    refreshContent();
+            } catch (error) {
+                alert("error");
+            }
         }
     });
+
 }
 
 function closeAdd () {
@@ -146,7 +151,6 @@ function addWorks () {
     });
 
     inputImg.addEventListener("change", function(event) {
-        event.stopPropagation();
         const spanImg = document.getElementById("imgInput");
         const previewImg = document.createElement("img");
         const vectorImg = document.getElementById("img-vector");
@@ -171,7 +175,9 @@ function addWorks () {
             vectorImg.style.display = "none"
             pImg.style.display = "none"
             addImgButton.style.display = "none"
+            event.stopPropagation();
         }
+        
     });
 }
 
@@ -247,10 +253,11 @@ function selectCategories (apiCategories) {
     }
 }
 
-async function refreshContent() {
+async function refreshContent(event) {
     const works = await getWorks();
     showWorks(works);
     showWorksModal(works);
+    event.preventDefault();
 }
 
 modalDisplay();
