@@ -107,10 +107,10 @@ function returnToGallery () {
     const galleryPhoto = document.getElementById("galleryPhoto");
 
     buttonReturn.addEventListener ("click", function(event){
+        event.stopPropagation();
         addForm.style.display = "none";
         galleryPhoto.style.display = "flex";
         refreshContent();
-        event.stopPropagation();
     })
 }
 
@@ -247,7 +247,6 @@ async function refreshContent() {
     showWorks(works);
     showWorksModal(works);
 
-    const spanImg = document.getElementById("imgInput");
     const vectorImg = document.getElementById("img-vector");
     const pImg = document.getElementById ("add-img-text");
     const addImgButton = document.getElementById("addImgButton");
@@ -264,13 +263,6 @@ function modalBackground(){
     const galleryPage = document.getElementById("galleryPage");
     const galleryPhoto = document.getElementById("galleryPhoto");
     const addForm = document.getElementById("addFormulaire");
-
-    // if (action === "open") {
-    //     galleryPage.style.display = "flex"
-    // }
-    // else if (action === "close") {
-    //     galleryPage.style.display = "none"
-    // }
 
     if (galleryPhoto.style.display === "flex" || addForm.style.display === "flex") {
         galleryPage.style.display = "flex"
