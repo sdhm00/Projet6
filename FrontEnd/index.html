@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-<aside id="modal" aria-hidden="true" role="modal" aria-modal="false">
+<aside id="modal" aria-hidden="true">
 	<div id="blockedition">
 		<p id="buttonmodal"><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>
 	</div>
@@ -42,12 +42,12 @@
 		</div>
 		<form id="formWork">
 			<div id="addform">
-				<span id="imgInput" class="imgInput">
-					<label for="image"><i class="fa-regular fa-image" id="img-vector"></i></label>
+				<div id="imgInput" class="imgInput">
+					<label><i class="fa-regular fa-image" id="img-vector"></i></label>
 					<button type="button" id="addImgButton">+ Ajouter photo</button>
 					<input type="file" name="image" id="addimage" class="input-file" accept="image/png, image/jpeg">
 					<p id="add-img-text">jpg, png : 4mo max</p>
-				</span>
+				</div>
 				<div id="formStyle">
 					<span class="spanTitle">
 						<label for="titre">Titre</label>
@@ -55,8 +55,7 @@
 					</span>
 					<span class="spanCategories">
 						<label for="categorie">Catégorie</label>
-						<select type="text" name="categorie" id="categorie">
-							<option value="" selected disabled hidden></option>
+						<select name="categorie" id="categorie">
 						</select>
 					</span>
 				</div>

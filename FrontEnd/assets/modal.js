@@ -223,9 +223,12 @@ function selectCategories (apiCategories) {
     const addForm = document.getElementById("addFormulaire");
     if (addForm.style.display = "flex") {
         const spanCategories = document.querySelector("#categorie")
+        const emptyOption = document.createElement("option")
         const optionObjets = document.createElement("option")
         const optionAppartements = document.createElement("option")
         const optionHotelEtResto = document.createElement("option")
+
+        emptyOption.innerText = ""
 
         optionObjets.innerText = apiCategories[0].name
         optionObjets.value = apiCategories[0].id
@@ -236,6 +239,7 @@ function selectCategories (apiCategories) {
         optionHotelEtResto.innerText = apiCategories[2].name
         optionHotelEtResto.value = apiCategories[2].id
 
+        spanCategories.appendChild(emptyOption)
         spanCategories.appendChild(optionObjets)
         spanCategories.appendChild(optionAppartements)
         spanCategories.appendChild(optionHotelEtResto)
