@@ -6,7 +6,6 @@ function modalDisplay (){
     const buttonModif = document.getElementById("buttonmodif")
     const hideCategories = document.querySelector(".categories")
     const titreProjet = document.getElementById("titreprojet")
-
     if (localStorage !== null && token !== null) {
         loginButton.style.display = "none";
         logoutButton.style.display = "unset";
@@ -18,7 +17,6 @@ function modalDisplay (){
     else {
         modal.style.display = "none";
     }
-
     logoutButton.addEventListener("click", function(){
         localStorage.removeItem("token");
         modalDisplay();
@@ -34,10 +32,8 @@ function showWorksModal (apiWorks) {
       const projetImg = document.createElement("img")
       const binBlock = document.createElement("span")
       const vectorBin = document.createElement("i")
-
       binBlock.classList.add("binblock")
       vectorBin.classList.add("fa","fa-solid", "fa-trash-can", "trash")
-
       vectorBin.id = apiWorks[i].id
   
       projetImg.src = apiWorks[i].imageUrl
@@ -55,16 +51,16 @@ function openModif () {
     const galleryPage = document.getElementById("galleryPage");
     
     buttonModif.addEventListener ("click", async function(event){
+        event.stopPropagation();
         galleryPhoto.style.display = "flex";
         galleryPage.style.display = "flex";
         const works = await getWorks();
         showWorksModal(works);
-        event.stopPropagation();
     })
-
     document.addEventListener("click", function(event) {
         if (!galleryPhoto.contains(event.target) && event.target !== buttonModif) {
             galleryPhoto.style.display = "none";
+            galleryPage.style.display = "none";
         }
     });
 }
@@ -72,7 +68,6 @@ function openModif () {
 function closeModif () {
     const buttonClose = document.getElementById("closebox");
     const galleryPhoto = document.getElementById("galleryPhoto");
-
     buttonClose.addEventListener ("click", function(event){
         galleryPhoto.style.display = "none";
         event.stopPropagation();
@@ -81,29 +76,21 @@ function closeModif () {
 
 function deleteWork () {
     const modalGallery = document.querySelector(".modalGallery");
-
     modalGallery.addEventListener("click", async function(event) {
         if (event.target.classList.contains("trash")) {
             event.preventDefault();
             
             const id = event.target.id;
             const userToken = localStorage.getItem("token");
-
-            try {
-                const deleteClick = await getDelete(id, userToken);
-                refreshContent()
-            } catch (error) {
-                alert("error");
-            }
+            const deleteClick = await getDelete(id, userToken);
+            refreshContent();
         }
-
     });
 }
 
 function closeAdd () {
     const buttonClose = document.getElementById("closeadd");
     const addForm = document.getElementById("addFormulaire");
-
     buttonClose.addEventListener ("click", function(event){
         addForm.style.display = "none";
         event.stopPropagation();
@@ -114,7 +101,6 @@ function returnToGallery () {
     const buttonReturn = document.getElementById("returnAdd");
     const addForm = document.getElementById("addFormulaire");
     const galleryPhoto = document.getElementById("galleryPhoto");
-
     buttonReturn.addEventListener ("click", function(event){
         addForm.style.display = "none";
         galleryPhoto.style.display = "flex";
@@ -127,7 +113,6 @@ function addWorks () {
     const galleryPhoto = document.getElementById("galleryPhoto");
     const openPost = document.getElementById("addButton");
     const addForm = document.getElementById("addFormulaire");
-
     openPost.addEventListener ("click", async function(event){
         event.stopPropagation();
         galleryPhoto.style.display = "none";
@@ -135,30 +120,25 @@ function addWorks () {
         const categories = await getCategories()
         selectCategories(categories)
     })
-
     document.addEventListener("click", function(event) {
         if (!addForm.contains(event.target) && event.target !== openPost) {
             addForm.style.display = "none";
         }
     });
-
     const addImgButton = document.getElementById("addImgButton");
     const inputImg = document.getElementById ("addimage");
-
     addImgButton.addEventListener("click", function(event) {
         event.stopPropagation();
         inputImg.click();
     });
-
     inputImg.addEventListener("change", function(event) {
+        event.stopPropagation();
         const spanImg = document.getElementById("imgInput");
         const previewImg = document.createElement("img");
         const vectorImg = document.getElementById("img-vector");
         const pImg = document.getElementById ("add-img-text");
         const addImgButton = document.getElementById("addImgButton");
-
         spanImg.appendChild(previewImg)
-
         const selectedFile = this.files[0];
         if (selectedFile) {
             const fileSizeInMB = selectedFile.size
@@ -175,22 +155,18 @@ function addWorks () {
             vectorImg.style.display = "none"
             pImg.style.display = "none"
             addImgButton.style.display = "none"
-            event.stopPropagation();
         }
-        
     });
 }
 
 function sendWork() {
     const addForm = document.getElementById("formWork");
     const sendButton = document.getElementById("validateButton")
-
     function changeButton() {
         const titreImg = document.getElementById("titre").value;
         const catImg = document.getElementById("categorie").value;
         const inputImg = document.getElementById("addimage");
         const selectedFile = inputImg.files[0];
-
         if (titreImg && catImg && selectedFile) {
             sendButton.style.backgroundColor = "#1D6154";
             sendButton.disabled = false;
@@ -199,11 +175,9 @@ function sendWork() {
             sendButton.disabled = true;
         }
     }
-
     document.getElementById("titre").addEventListener("input", changeButton);
     document.getElementById("categorie").addEventListener("input", changeButton);
     document.getElementById("addimage").addEventListener("change", changeButton);
-
     addForm.addEventListener("submit", async function(event) {
         event.preventDefault();
         const inputImg = document.getElementById("addimage");
@@ -213,8 +187,6 @@ function sendWork() {
         const categorie = document.getElementById("categorie").value;
         const userToken = localStorage.getItem("token");
 
-        console.log(titre, categorie, selectedFile)
-
         const formData = new FormData();
         formData.append("title", titre);
         formData.append("category", categorie);
@@ -223,8 +195,7 @@ function sendWork() {
         try {
             const post = await postWorks(formData, userToken);
             refreshContent();
-            closeAdd()
-            closeModif()
+            addForm.reset();
         }
         catch (error){
             alert("error")
@@ -234,7 +205,6 @@ function sendWork() {
 
 function selectCategories (apiCategories) {
     const addForm = document.getElementById("addFormulaire");
-
     if (addForm.style.display = "flex") {
         const spanCategories = document.querySelector("#categorie")
         const optionObjets = document.createElement("option")
@@ -243,11 +213,12 @@ function selectCategories (apiCategories) {
 
         optionObjets.innerText = apiCategories[0].name
         optionObjets.value = apiCategories[0].id
+
         optionAppartements.innerText = apiCategories[1].name
         optionAppartements.value = apiCategories[1].id
+
         optionHotelEtResto.innerText = apiCategories[2].name
         optionHotelEtResto.value = apiCategories[2].id
-
 
         spanCategories.appendChild(optionObjets)
         spanCategories.appendChild(optionAppartements)
@@ -255,12 +226,10 @@ function selectCategories (apiCategories) {
     }
 }
 
-async function refreshContent(event) {
-    event.stopPropagation();
+async function refreshContent() {
     const works = await getWorks();
     showWorks(works);
     showWorksModal(works);
-
 }
 
 modalDisplay();
