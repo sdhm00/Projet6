@@ -48,19 +48,20 @@ function showWorksModal (apiWorks) {
 function openModif () {
     const buttonModif = document.getElementById("buttonmodif");
     const galleryPhoto = document.getElementById("galleryPhoto");
-    const galleryPage = document.getElementById("galleryPage");
     
     buttonModif.addEventListener ("click", async function(event){
         event.stopPropagation();
         galleryPhoto.style.display = "flex";
-        galleryPage.style.display = "flex";
+        modalBackground()
         const works = await getWorks();
         showWorksModal(works);
     })
+
     document.addEventListener("click", function(event) {
         if (!galleryPhoto.contains(event.target) && event.target !== buttonModif) {
+            event.stopPropagation();
             galleryPhoto.style.display = "none";
-            galleryPage.style.display = "none";
+            modalBackground()
         }
     });
 }
@@ -70,6 +71,7 @@ function closeModif () {
     const galleryPhoto = document.getElementById("galleryPhoto");
     buttonClose.addEventListener ("click", function(event){
         galleryPhoto.style.display = "none";
+        modalBackground()
         event.stopPropagation();
     })
 }
@@ -83,7 +85,7 @@ function deleteWork () {
             const id = event.target.id;
             const userToken = localStorage.getItem("token");
             const deleteClick = await getDelete(id, userToken);
-            refreshContent();
+            refreshContent()
         }
     });
 }
@@ -91,9 +93,11 @@ function deleteWork () {
 function closeAdd () {
     const buttonClose = document.getElementById("closeadd");
     const addForm = document.getElementById("addFormulaire");
+
     buttonClose.addEventListener ("click", function(event){
         addForm.style.display = "none";
         event.stopPropagation();
+        modalBackground()
     })
 }
 
@@ -101,6 +105,7 @@ function returnToGallery () {
     const buttonReturn = document.getElementById("returnAdd");
     const addForm = document.getElementById("addFormulaire");
     const galleryPhoto = document.getElementById("galleryPhoto");
+
     buttonReturn.addEventListener ("click", function(event){
         addForm.style.display = "none";
         galleryPhoto.style.display = "flex";
@@ -113,33 +118,42 @@ function addWorks () {
     const galleryPhoto = document.getElementById("galleryPhoto");
     const openPost = document.getElementById("addButton");
     const addForm = document.getElementById("addFormulaire");
+
     openPost.addEventListener ("click", async function(event){
         event.stopPropagation();
         galleryPhoto.style.display = "none";
         addForm.style.display = "flex";
         const categories = await getCategories()
         selectCategories(categories)
+        modalBackground()
     })
+
     document.addEventListener("click", function(event) {
         if (!addForm.contains(event.target) && event.target !== openPost) {
             addForm.style.display = "none";
+            modalBackground()
         }
     });
+
     const addImgButton = document.getElementById("addImgButton");
     const inputImg = document.getElementById ("addimage");
+
     addImgButton.addEventListener("click", function(event) {
         event.stopPropagation();
         inputImg.click();
     });
+
     inputImg.addEventListener("change", function(event) {
-        event.stopPropagation();
         const spanImg = document.getElementById("imgInput");
         const previewImg = document.createElement("img");
         const vectorImg = document.getElementById("img-vector");
         const pImg = document.getElementById ("add-img-text");
         const addImgButton = document.getElementById("addImgButton");
+
         spanImg.appendChild(previewImg)
+
         const selectedFile = this.files[0];
+
         if (selectedFile) {
             const fileSizeInMB = selectedFile.size
             if (fileSizeInMB > 4000000) {
@@ -155,6 +169,8 @@ function addWorks () {
             vectorImg.style.display = "none"
             pImg.style.display = "none"
             addImgButton.style.display = "none"
+            modalBackground()
+            event.stopPropagation();
         }
     });
 }
@@ -230,6 +246,38 @@ async function refreshContent() {
     const works = await getWorks();
     showWorks(works);
     showWorksModal(works);
+
+    const spanImg = document.getElementById("imgInput");
+    const vectorImg = document.getElementById("img-vector");
+    const pImg = document.getElementById ("add-img-text");
+    const addImgButton = document.getElementById("addImgButton");
+    const previewImg = document.querySelector("#imgInput img");
+    if (previewImg) {
+        previewImg.remove();
+        vectorImg.style.display = "block flex"
+        pImg.style.display = "flex"
+        addImgButton.style.display = "block flex"
+    }
+}
+
+function modalBackground(){
+    const galleryPage = document.getElementById("galleryPage");
+    const galleryPhoto = document.getElementById("galleryPhoto");
+    const addForm = document.getElementById("addFormulaire");
+
+    // if (action === "open") {
+    //     galleryPage.style.display = "flex"
+    // }
+    // else if (action === "close") {
+    //     galleryPage.style.display = "none"
+    // }
+
+    if (galleryPhoto.style.display === "flex" || addForm.style.display === "flex") {
+        galleryPage.style.display = "flex"
+    }
+    else if (galleryPhoto.style.display === "none" && addForm.style.display === "none") {
+        galleryPage.style.display = "none"
+    }
 }
 
 modalDisplay();
