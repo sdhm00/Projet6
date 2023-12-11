@@ -26,28 +26,7 @@ function modalDisplay (){
     })
 }
 
-// Ouverture et Display de la galerie
-
-function showWorksModal (apiWorks) {
-    const modalGallery = document.querySelector(".modalGallery")
-    modalGallery.innerHTML = "";
-    for (let i = 0; i < apiWorks.length; i++) {
-      const projetDiv = document.createElement("figure")
-      const projetImg = document.createElement("img")
-      const binBlock = document.createElement("span")
-      const vectorBin = document.createElement("i")
-      binBlock.classList.add("binblock")
-      vectorBin.classList.add("fa","fa-solid", "fa-trash-can", "trash")
-      vectorBin.id = apiWorks[i].id
-  
-      projetImg.src = apiWorks[i].imageUrl
-  
-      binBlock.appendChild(vectorBin)
-      projetDiv.appendChild(projetImg)
-      projetDiv.appendChild(binBlock)
-      modalGallery.appendChild(projetDiv)
-    }
-}
+// Ouverture de la galerie
 
 function openModif () {
     const buttonModif = document.getElementById("buttonmodif");
@@ -70,7 +49,7 @@ function openModif () {
     });
 }
 
-// Fin ouverture et display de la Galerie
+// Fin ouverture de la Galerie
 
 // Fermeture de la Galerie
 
@@ -85,6 +64,31 @@ function closeModif () {
 }
 
 // Fin Fermeture de la Galerie
+
+// Display de la Galerie
+
+function showWorksModal (apiWorks) {
+    const modalGallery = document.querySelector(".modalGallery")
+    modalGallery.innerHTML = "";
+    for (let i = 0; i < apiWorks.length; i++) {
+      const projetDiv = document.createElement("figure")
+      const projetImg = document.createElement("img")
+      const binBlock = document.createElement("span")
+      const vectorBin = document.createElement("i")
+      binBlock.classList.add("binblock")
+      vectorBin.classList.add("fa","fa-solid", "fa-trash-can", "trash")
+      vectorBin.id = apiWorks[i].id
+  
+      projetImg.src = apiWorks[i].imageUrl
+  
+      binBlock.appendChild(vectorBin)
+      projetDiv.appendChild(projetImg)
+      projetDiv.appendChild(binBlock)
+      modalGallery.appendChild(projetDiv)
+    }
+}
+
+// Fin display de la Galerie
 
 // Suppression d'un projet
 
