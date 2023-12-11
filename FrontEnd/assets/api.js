@@ -1,4 +1,10 @@
+// Connection à l'API
+
 const baseUrl = "http://localhost:5678/api"
+
+// Fin Connection à l'API
+
+// Connection à l'API pour les différents projets
 
 async function getWorks(){
     const apiWorks = await fetch(baseUrl + "/works")
@@ -8,6 +14,10 @@ async function getWorks(){
      throw new Error('Impossible de contacter le serveur')
 }
 
+// Fin Connection à l'API pour les différents projets
+
+// Connection à l'API pour les différentes catégories
+
 async function getCategories(){
   const apiCategories = await fetch(baseUrl + "/categories")
    if (apiCategories.ok === true) {
@@ -15,6 +25,10 @@ async function getCategories(){
    }
    throw new Error('Impossible de contacter le serveur')
 }
+
+// Fin Connection à l'API pour les différentes catégories
+
+// Connection à l'API pour la vérification lors de la connexion
 
 async function getLogin(email, password){
   console.log(email, password)
@@ -28,6 +42,10 @@ async function getLogin(email, password){
     return apiLogin.json();
   }
 }
+
+// Fin Connection à l'API pour la vérification lors de la connexion
+
+// Connection à l'API pour l'ajout de nouveau projet
 
 async function postWorks(formData, userToken){
   console.log(formData, userToken)
@@ -50,6 +68,10 @@ async function postWorks(formData, userToken){
   }
 }
 
+// Fin Connection à l'API pour l'ajout de nouveau projet
+
+// Connection à l'API pour la suppression d'un projet
+
 async function getDelete(id, userToken){
   console.log(id, userToken)
   const apiDelete = await fetch(baseUrl + "/works/" + id, {
@@ -64,3 +86,5 @@ async function getDelete(id, userToken){
     return false
   }
 }
+
+// Fin Connection à l'API pour la suppression d'un projet

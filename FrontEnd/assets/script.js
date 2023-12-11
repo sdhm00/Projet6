@@ -1,3 +1,5 @@
+// Affichage de la galerie de projet
+
 function showWorks (apiWorks) {
   const gallery = document.querySelector(".gallery")
   gallery.innerHTML = "";
@@ -14,6 +16,10 @@ function showWorks (apiWorks) {
     gallery.appendChild(projetDiv)
   }
 }
+
+// Fin Affichage de la galerie de projet
+
+// Affichage des catégories
 
 function showCategories (apiCategories) {
   const categories = document.querySelector(".categories")
@@ -65,6 +71,7 @@ function showCategories (apiCategories) {
   })
 }
 
+// Affichage des catégories
 
 const init = async()=>{
   const works = await getWorks()

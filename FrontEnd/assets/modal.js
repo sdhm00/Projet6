@@ -1,3 +1,5 @@
+// Fonction Modale
+
 function modalDisplay (){
     const modal = document.getElementById("modal")
     const loginButton = document.getElementById("loginButton")
@@ -23,6 +25,8 @@ function modalDisplay (){
         window.location.reload();
     })
 }
+
+// Ouverture et Display de la galerie
 
 function showWorksModal (apiWorks) {
     const modalGallery = document.querySelector(".modalGallery")
@@ -66,6 +70,10 @@ function openModif () {
     });
 }
 
+// Fin ouverture et display de la Galerie
+
+// Fermeture de la Galerie
+
 function closeModif () {
     const buttonClose = document.getElementById("closebox");
     const galleryPhoto = document.getElementById("galleryPhoto");
@@ -75,6 +83,10 @@ function closeModif () {
         event.stopPropagation();
     })
 }
+
+// Fin Fermeture de la Galerie
+
+// Suppression d'un projet
 
 function deleteWork () {
     const modalGallery = document.querySelector(".modalGallery");
@@ -90,6 +102,10 @@ function deleteWork () {
     });
 }
 
+// Fin supression d'un projet
+
+// Fermeture formulaire d'ajout
+
 function closeAdd () {
     const buttonClose = document.getElementById("closeadd");
     const addForm = document.getElementById("addFormulaire");
@@ -100,6 +116,10 @@ function closeAdd () {
         modalBackground()
     })
 }
+
+// Fin Fermeture formulaire d'ajout
+
+// Retour du formulaire à la galerie
 
 function returnToGallery () {
     const buttonReturn = document.getElementById("returnAdd");
@@ -113,6 +133,10 @@ function returnToGallery () {
         refreshContent();
     })
 }
+
+// Fin Retour du formulaire à la galerie
+
+// Formulaire d'ajout d'un projet
 
 function addWorks () {
     const galleryPhoto = document.getElementById("galleryPhoto");
@@ -175,6 +199,8 @@ function addWorks () {
     });
 }
 
+// Envoie du formulaire
+
 function sendWork() {
     const addForm = document.getElementById("formWork");
     const sendButton = document.getElementById("validateButton")
@@ -219,6 +245,10 @@ function sendWork() {
     })
 }
 
+// Fin Envoie du formulaire
+
+// Choix de la catégorie
+
 function selectCategories (apiCategories) {
     const addForm = document.getElementById("addFormulaire");
     if (addForm.style.display = "flex") {
@@ -246,6 +276,12 @@ function selectCategories (apiCategories) {
     }
 }
 
+// Fin Choix de la catégorie
+
+// Fin Formulaire d'ajout d'un projet
+
+// Refresh du contenu sans actualisation de la page
+
 async function refreshContent() {
     const works = await getWorks();
     showWorks(works);
@@ -263,6 +299,10 @@ async function refreshContent() {
     }
 }
 
+// Fin Refresh du contenu sans actualisation de la page
+
+// Changement du background
+
 function modalBackground(){
     const galleryPage = document.getElementById("galleryPage");
     const galleryPhoto = document.getElementById("galleryPhoto");
@@ -276,6 +316,8 @@ function modalBackground(){
     }
 }
 
+// Fin Changement du background
+
 modalDisplay();
 openModif();
 closeModif();
@@ -284,3 +326,5 @@ addWorks();
 closeAdd();
 returnToGallery();
 sendWork();
+
+// Fin Fonction Modale

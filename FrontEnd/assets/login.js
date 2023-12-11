@@ -1,3 +1,5 @@
+// Affichage de logout quand on est connecter
+
 const currentUrl = window.location.pathname;
 
 if (currentUrl.includes('login.html')) {
@@ -5,6 +7,9 @@ if (currentUrl.includes('login.html')) {
   loginActive.style.fontWeight = 600;
 }
 
+// Fin Affichage de logout quand on est connecter
+
+// Connection
 
 function installConnexion(){
   const form = document.getElementById("form");
@@ -34,4 +39,6 @@ const init = ()=>{
   installConnexion()
 }
 init();
+
+// Fin Connection
 
